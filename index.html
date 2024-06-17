@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shimron calculator</title>
+    <!--
+        The tailwind CDN is designed for development purposes only, and is not the best choice for production.
+        Read more here: https://tailwindcss.com/docs/installation 
+    -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- example for dark theme styling when using tailwind cdn -->
+    <style>
+        /*examples for dark/light themes*/
+        .dark .dark\:text-white {
+            color: #fff;
+        }
+        .dark .dark\:bg-gray-800 {
+            background-color: #1f2937;
+        }
+        .light .light\:text-black {
+            color: #000;
+        }
+        body {
+            display: flex;
+            justify-content: center; /* Center along the horizontal axis */
+            align-items: center; /* Center along the vertical axis */
+            height: 100vh; /* 100% of the viewport height */
+            margin: 0; /* Remove default margin to avoid unwanted spacing */
+        }
+
+        .centered-div {
+            width: 480x; /* Adjust the width as needed */
+            height: 380x; /* Adjust the height as needed */
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow for better visibility */
+        }
+        
+
+        .Blue-button {
+            width: 80px; /* Set a fixed width for circular buttons */
+            height: 40px; /* Set a fixed height for circular buttons */
+            border-radius: 10%; /* Make buttons circular */
+            border: 2px  ; /* Add a transparent border */
+            background-color: rgb(102, 172, 252);
+            text-align: center;
+            font-weight: bold; /* Make the font bold */
+            color: white; /* Set the font color to white */
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 2px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-top: 2px;
+            border-color: rgb(93, 165, 248)
+            transition: border-color 0.3s ease; /* Add a smooth transition for the border color */
+        }
+
+        .Blue-button:hover {
+            border-color: rgb(75, 153, 243); /* Change border color on hover */
+            background-color: rgb(82, 160, 250);
+        }
+
+        .button {
+            width: 80px; /* Set a fixed width for circular buttons */
+            height: 40px; /* Set a fixed height for circular buttons */
+            border-radius: 10%; /* Make buttons circular */
+            border: 2px  ; /* Add a transparent border */
+            background-color: #f7f7f7;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 2px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-top: 2px;
+            border-color: rgb(68, 67, 67)
+            transition: border-color 0.3s ease; /* Add a smooth transition for the border color */
+        }
+
+        .button:hover {
+            border-color: rgb(238, 232, 232); /* Change border color on hover */
+            background-color: #ebe8e8;
+        }
+
+        .button img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 50%; /* Make the image fill the available width */
+            max-height: 20px; /* Make the image fill the available height */
+        }
+
+        .display {
+            height: 50px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #3846ff;
+            display: flex;
+            align-items: left;
+            justify-content: flex-end;
+            padding: 10px;
+            font-size: 20px;
+            margin: auto; /* Center the display horizontally */
+            margin-bottom: 10px;
+            max-width: 380px; /* Limit the width for better visibility */
+        }
+
+
+        
+
+        
+
+    </style>
+</head>
+
+<body class="dark:text-white light:text-black">
+
+    <div class = centered-div>
+        <div class="display" id="display">0</div>
+        <div>
+            <button id="btn1" class="button">2<sup>nd</sup></button>
+            <button id="btn2" class="button">&pi;</button>
+            <button id="btn3" class="button">e</button>
+            <button id="btn4" class="button">C</button>
+            <button id="btn5" class="button image-button"><img src="images/delete.png" alt="Delete"></button>
+        </div>
+        
+        <div>
+            <button id="btn6" class="button">x<sup>2</sup></button>
+            <button id="btn7" class="button"><sup>1</sup>/x</button>
+            <button id="btn8" class="button">|x|</button>
+            <button id="btn9" class="button">exp</button>
+            <button id="btn10" class="button btn">mod</button>
+        </div>
+        
+        <div>
+            <button id="btn11" class="button"><sup>2</sup>&radic;x</button>
+            <button id="btn12" class="button btn">(</button>
+            <button id="btn13" class="button btn">)</button>
+            <button id="btn14" class="button">n!</button>
+            <button id="btn15" class="button btn">&divide;</button>
+        </div>
+        
+        <div>
+            <button id="btn16" class="button">x<sup>y</sup></button>
+            <button id="btn17" class="button btn">7</button>
+            <button id="btn18" class="button btn">8</button>
+            <button id="btn19" class="button btn">9</button>
+            <button id="btn20" class="button btn">x</button>
+        </div>
+        
+        <div>
+            <button id="btn21" class="button">10<sup>x</sup></button>
+            <button id="btn22" class="button btn">4</button>
+            <button id="btn23" class="button btn">5</button>
+            <button id="btn24" class="button btn">6</button>
+            <button id="btn25" class="button btn">-</button>
+        </div>
+        
+        <div>
+            <button id="btn26" class="button">log</button>
+            <button id="btn27" class="button btn">1</button>
+            <button id="btn28" class="button btn">2</button>
+            <button id="btn29" class="button btn">3</button>
+            <button id="btn30" class="button btn">+</button>
+        </div>
+        
+        <div>
+            <button id="btn31" class="button">ln</button>
+            <button id="btn32" class="button">+\-</button>
+            <button id="btn33" class="button btn">0</button>
+            <button id="btn34" class="button btn">.</button>
+            <button id="btn35" class="Blue-button dark\:text-white">=</button>
+        </div>
+        
+    </div>
+
+    <!-- special scripts for integration in MTW gallery - must be placed at the bottom of the HTML after your code -->
+    <script>
+
+    let global_display = '';
+    let global_string_display=';'
+    const allOperators = ['+', '-', '^', 'x', '&divide;', 'mod', 'fact', 'abs', 'sqrt', 'log', 'ln', '(', ')'];
+    const binaryOperators = ['+', '-', '^', 'x', '&divide;', 'mod'];
+    const unaryOperators = ['fact', 'abs', 'sqrt', 'log', 'ln'];
+
+    // Select all elements with both classes 'button' and 'btn'
+    var btnElements = document.querySelectorAll('.button.btn');
+
+    // Attach the click event listener to each button
+    btnElements.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const number = this.innerText;
+            global_display+=number
+            document.getElementById('display').innerHTML = global_display;
+        });
+    });
+
+    document.getElementById('btn6').addEventListener('click', function(button) {
+        global_display += "^2";
+        document.getElementById('display').innerHTML = global_display;
+    });
+
+    document.getElementById('btn7').addEventListener('click', function(button) {
+        global_display += "1"+'&divide;' ;
+        document.getElementById('display').innerHTML = global_display;
+        });
+
+    document.getElementById('btn8').addEventListener('click', function(button) {
+        global_display += "abs";
+        document.getElementById('display').innerHTML = global_display;
+    });
+
+    document.getElementById('btn9').addEventListener('click', function(button) {
+        global_display += Math.E+"^";
+        document.getElementById('display').innerHTML = global_display;
+    });
+
+    document.getElementById('btn11').addEventListener('click', function(button) {
+        global_display += "sqrt";
+        document.getElementById('display').innerHTML = global_display;
+    });
+
+    document.getElementById('btn14').addEventListener('click', function(button) {
+        global_display += "fact";
+        document.getElementById('display').innerHTML = global_display;
+    });
+
+    document.getElementById('btn16').addEventListener('click', function(button) {
+        global_display += "^";
+        document.getElementById('display').innerHTML = global_display;
+    });
+
+    document.getElementById('btn21').addEventListener('click', function(button) {
+        global_display += "10^";
+        document.getElementById('display').innerHTML = global_display;
+    });
+
+    document.getElementById('btn26').addEventListener('click', function(button) {
+        global_display += "log";
+        document.getElementById('display').innerHTML = global_display;
+    });
+
+    document.getElementById('btn31').addEventListener('click', function(button) {
+        global_display += "ln";
+        document.getElementById('display').innerHTML = global_display;
+    });
+
+    document.getElementById('btn2').addEventListener('click', function(button) {
+        global_display += Math.PI;
+        document.getElementById('display').innerHTML = global_display;
+    });
+
+    document.getElementById('btn3').addEventListener('click', function(button) {
+        global_display += Math.E;
+        document.getElementById('display').innerHTML = global_display;
+    });
+
+    document.getElementById('btn4').addEventListener('click', function(button) {
+        global_display=''
+        document.getElementById('display').innerHTML ="0";
+    });
+
+    document.getElementById('btn5').addEventListener('click', function(button) 
+    {
+        if(global_display.length==0)
+            return;
+        global_display=global_display.slice(0,-1);
+        if(global_display.length==0)
+            document.getElementById('display').innerHTML ="0";
+        else
+        document.getElementById('display').innerHTML =global_display;
+    });
+
+    document.getElementById('btn35').addEventListener('click', function(button) 
+    {
+        on_equal_click()
+    });
+    
+    function on_equal_click() 
+    {
+        let list_of_elemets_in_display;
+
+        // Check if global_display is empty
+        if (global_display.length === 0) {
+            document.getElementById('display').innerHTML = '0'; // or any other default value
+            return;
+        }
+
+        list_of_elemets_in_display = splitStringWithOperators(global_display, allOperators);
+        list_of_elemets_in_display = list_of_elemets_in_display.map(element => element.replace(/[()]/g, ''));
+
+        global_display='';
+
+        var result = calculateExpression(list_of_elemets_in_display);
+
+        // Correct the check for NaN
+        if (isNaN(result)) {
+            document.getElementById('display').innerHTML = 'Error';
+        } else {
+            document.getElementById('display').innerHTML = result;
+        }
+    }
+
+    // this function get operation name and two float vlaue and return the result
+    function performOperation(value1, operation, value2) {
+      switch (operation) 
+      {
+        case '+':
+          return value1 + value2;
+        case '-':
+          return value2 - value1;
+        case '^':
+          return Math.pow(value2,value1);
+        case 'x':
+          return value1 * value2;
+        case '&divide;':
+          return value2 / value1;
+        case 'mod':
+            return value2%value1;
+        case 'fact':
+            return factorial(value1);
+        case 'abs':
+            return Math.abs(value1);
+        case 'sqrt':
+            return Math.sqrt(value1);
+        case 'ln':
+            return Math.log(value1);  // for natural log base e
+        case 'log':
+            return Math.log(value1) / Math.log(10);  // for natural log base 10
+        default:
+          return NaN;
+      }
+    }
+
+function calculateExpression(elements) 
+{
+
+    let opernd_stack = []
+    let operator_stack = []
+
+        for (let element of elements) 
+        {
+            if(isNumeric(element)) // if the elemnt is a number we push it to the opernd stack
+            {
+                opernd_stack.push(parseFloat(element))
+            }
+            else // its a operator 
+            {
+                if(operator_stack.length==0)
+                {
+                    operator_stack.push(element);
+                }
+                else // we need to check if we need first do the operator that in the stack (becuase the operator we gonna insert have lower priority) or we can isert it
+                {
+                    var top_operator = operator_stack.pop();
+                    if(compareOperators(element,top_operator)==1) // if the operator we want to insert have greater priority
+                    {
+                        if(opernd_stack.length==0) // there most be atleast one number to do on him the operator action if not the expression is incorrect
+                        {
+                            return NaN;
+                        }
+                        if(unaryOperators.includes(top_operator)) // if 
+                        {
+                            temp_result=performOperation(opernd_stack.pop(),top_operator,NaN); // unary operator
+                            opernd_stack.push(temp_result);
+                        }
+                        else if(binaryOperators.includes(top_operator)) // binary operator
+                        {
+                            if(opernd_stack.length<2) // there most be atleast two numbers to do on them the operator action if not the expression is incorrect
+                            {
+                                return NaN;
+                            }
+                            var value1=opernd_stack.pop();
+                            var value2 = opernd_stack.pop();
+                            temp_result=performOperation(value1,top_operator,value2);
+                            opernd_stack.psuh(temp_result); // push the new result to the stack
+                        }
+                        operator_stack.push(element); // in the end we push the greater priotiy operator to the stack
+                    }
+                    else // else the operator we try to insert is equals or less priotiy the the top elemnt in the stack
+                    {
+                        operator_stack.push(top_operator);
+                        operator_stack.push(element);
+                    }
+                }
+            }
+        }
+    while(operator_stack.length>0)
+    {
+        operator_element=operator_stack.pop();
+        if(unaryOperators.includes(operator_element)) // if is unary operator
+        {
+            if(opernd_stack.length==0) // if operand stack is empty reutrn nan exmpression not good
+            {
+                return NaN
+            }
+            var value = opernd_stack.pop(); // take the top element
+            opernd_stack.push(performOperation(value,operator_element)); // calculate result and push again to the stack
+        }
+        else if(binaryOperators.includes(operator_element))
+        {
+            if(opernd_stack.length<2) // there is not enough number to do the action the expression is not good
+            {
+                return NaN;
+            }
+            var value1= opernd_stack.pop(),value2=opernd_stack.pop();
+            opernd_stack.push(performOperation(value1,operator_element,value2));
+        }
+    }
+    if(opernd_stack.length!=1)
+    {
+        return NaN;
+    }   
+    return opernd_stack.pop();
+
+}
+
+
+function compareOperators(operatorX, operatorY) // to make the arithmetic order right we created witch operator have greater praiotiy
+{
+    // Check if both operators are binary
+    if (binaryOperators.includes(operatorX) && binaryOperators.includes(operatorY)) {
+        return binaryOperators.indexOf(operatorX) > binaryOperators.indexOf(operatorY) ? 1 :
+               binaryOperators.indexOf(operatorX) < binaryOperators.indexOf(operatorY) ? -1 : 0;
+    }
+
+    // Check if both operators are unary
+    if (unaryOperators.includes(operatorX) && unaryOperators.includes(operatorY)) {
+        return unaryOperators.indexOf(operatorX) > unaryOperators.indexOf(operatorY) ? 1 :
+               unaryOperators.indexOf(operatorX) < unaryOperators.indexOf(operatorY) ? -1 : 0;
+    }
+
+    // If one is unary and the other is binary, consider binary as higher precedence
+    if (binaryOperators.includes(operatorX) && unaryOperators.includes(operatorY)) {
+        return 1;
+    } else if (unaryOperators.includes(operatorX) && binaryOperators.includes(operatorY)) {
+        return -1;
+    }
+
+    // If both operators are not recognized, return 0
+    return 0;
+}
+
+
+    // Helper function to check if a string is numeric
+    function isNumeric(str) 
+    {
+        return !isNaN(parseFloat(str)) && isFinite(str);
+    }
+
+
+    function splitStringWithOperators(inputString, operators) {
+    // Create a regular expression pattern to match the operators
+    inputString=convertDisplay(inputString);
+    const operatorPattern = /(\+|\-|\^|x|&divide;|mod|fact|abs|sqrt|log|ln|\(|\))/g;
+    // Split the string based on the operators
+    const parts = inputString.split(operatorPattern);
+
+    // Remove any empty strings from the resulting array
+    const filteredParts = parts.filter(Boolean);
+
+    return filteredParts;
+}
+
+function convertDisplay(display) {
+    // Define a map of symbol replacements
+    const symbolReplacements = {
+        '÷': '&divide;',   // Division
+        '×': 'x',          // Multiplication
+        '+': '+',          // Addition
+        '-': '-',          // Subtraction
+        '^': '^',          // Exponentiation
+        'sqrt': 'sqrt',    // Square root
+        'log': 'log',      // Logarithm
+        'ln': 'ln',        // Natural logarithm
+        'fact': "fact",    // Factorial
+        'abs': 'abs',      // Absolute value
+        '(': '(',          // Left parenthesis
+        ')': ')'           // Right parenthesis
+        // Add more replacements as needed
+    };
+
+    // Replace symbols in the display based on the map
+    for (const [originalSymbol, replacement] of Object.entries(symbolReplacements)) {
+        display = display.split(originalSymbol).join(replacement);
+    }
+
+    return display;
+}
+
+
+
+
+
+    function factorial(n) {
+        if (n === 0 || n === 1) {
+        return 1;
+        } else {
+            return n * factorial(n - 1);
+        }
+    }
+
+
+        // custom config for the MTW app 
+        const mtwAppConfig = {
+            border: true // app border in the MTW page                    
+        }
+
+        ///////////////////////////////////////////////////////
+        // implement this functions in order to use private API        
+        const sendPrivateApiRequest = async () => {
+            // your code here:
+            // sendRequestToParent({ cat: 'getAssets' })
+        }        
+
+        const acceptPrivateApiResponse = async (data) => {
+            // process received data here:
+            // console.log(data)
+        }
+
+        // use this in order to send on document load
+        document.addEventListener('DOMContentLoaded', () => {
+            // your code here:
+            //sendRequestToParent({ method: 'getAssets' })
+        })
+
+    </script>
+    <script src="https://morethanwallet.com/appstore/index.js"></script>
+</body>
+
+</html>
